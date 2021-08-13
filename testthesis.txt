@@ -1,0 +1,23 @@
+Data=imread('nahid.jpg');
+Data=rgb2gray(Data);
+
+Data=imresize(Data,[256 256])
+rData=reshape(Data,[size(Data,1)*size(Data,2) 1])
+dData=double(rData)
+padding=mod(length(dData),sf)
+if (padding~=0)
+    padding=sf-padding
+end
+pData=[dData;zeros(padding,1)]
+Data=reshape(pData,[sf,length(pData)/sf])
+Data_binary=[];
+sz1=size(Data,2)
+for j=1:size(Data,2)
+temp=[];
+for i=1:size(Data,1)
+temp = [temp 5];
+end
+Data_binary=[Data_binary;temp];
+end
+
+
